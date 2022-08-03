@@ -1,25 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import {LoginScreen}from "./ui-components";
+import React from 'react';
+import LoginWrapper from './wrappers/LoginWrapper'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+ 
+  constructor(props) {
+    super(props);
+    this.state = ({screens: "login"});
+  }
+
+  render (){
+    if (this.state.screens == "login"){
+      return (
+        <div className="App">
+          <LoginWrapper />
+        </div>
+        );
+    }else{
+      return (
+        <div>
+          Thiefsh
+        </div>
+      )
+    }
+    
+  }
+  
 }
 
 export default App;
