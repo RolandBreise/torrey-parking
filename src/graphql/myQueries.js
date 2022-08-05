@@ -44,3 +44,41 @@ export const MyListStudents = /* GraphQL */ `
     }
   }
 `;
+export const myGetStudent = /* GraphQL */ `
+  query GetStudent($id: ID!) {
+    getStudent(id: $id) {
+      id
+      studentEmail
+      studentID
+      firstName
+      lastName
+        Releases {
+            items {
+                id
+                _version
+                date
+                lot
+                number
+                studentID
+            }
+        }
+      ParkingSpot {
+        id
+        lot
+        number
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        parkingSpotStudentId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      studentParkingSpotId
+    }
+  }
+`;

@@ -17,7 +17,7 @@ type ParkingSpot @model @auth(rules: [{allow: public}]) {
 
 type Releases @model @auth(rules: [{allow: public}]) {
   id: ID!
-  date: String
+  date: AWSDate
   lot: String
   number: String
   studentID: ID! @index(name: "byStudent")

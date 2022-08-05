@@ -13,6 +13,8 @@ class App extends React.Component {
 
     super(props);
 
+    this.UID = 0;
+
     this.state = ({
       student: null,
       hasSpot: false,
@@ -40,7 +42,10 @@ class App extends React.Component {
         return (
           <div>
             <ParkingWrapper
-            logout = {this.logout}/>
+            logout = {this.logout}
+            student = {this.state.student}
+            key = {this.UID++}
+            />
           </div>
         )
       }else {

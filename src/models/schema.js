@@ -128,7 +128,7 @@ export const schema = {
                 "date": {
                     "name": "date",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSDate",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -286,5 +286,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "9a2f02c1fda8f547be45e8a70fe9b2f1"
+    "version": "6e95bb33f441aab32ceef0b54ff85cb4"
 };
