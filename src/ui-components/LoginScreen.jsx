@@ -7,7 +7,14 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Heading, Text, TextField, View } from "@aws-amplify/ui-react";
+import {
+  Badge,
+  Button,
+  Heading,
+  Text,
+  TextField,
+  View,
+} from "@aws-amplify/ui-react";
 export default function LoginScreen(props) {
   const { email, ID, failMsg, overrides, ...rest } = props;
   return (
@@ -20,24 +27,12 @@ export default function LoginScreen(props) {
       {...rest}
       {...getOverrideProps(overrides, "LoginScreen")}
     >
-      <View
-        width="235px"
-        height="114px"
-        position="absolute"
-        top="63px"
-        left="43px"
-        borderRadius="16px"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(87,205,255,1)"
-        {...getOverrideProps(overrides, "Rectangle 1")}
-      ></View>
       <Heading
         display="flex"
         gap="0"
         position="absolute"
-        top="90px"
+        top="118px"
         left="98px"
-        direction="row"
         justifyContent="center"
         alignItems="center"
         padding="0px 0px 0px 0px"
@@ -49,7 +44,7 @@ export default function LoginScreen(props) {
         display="flex"
         gap="8px"
         position="absolute"
-        top="233px"
+        top="232px"
         left="10px"
         direction="column"
         width="300px"
@@ -68,7 +63,7 @@ export default function LoginScreen(props) {
         display="flex"
         gap="8px"
         position="absolute"
-        top="342px"
+        top="320px"
         left="10px"
         direction="column"
         width="300px"
@@ -83,22 +78,6 @@ export default function LoginScreen(props) {
         value={ID}
         {...getOverrideProps(overrides, "StudentID")}
       ></TextField>
-      <Button
-        display="flex"
-        gap="0"
-        position="absolute"
-        top="486px"
-        left="222px"
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
-        size="default"
-        isDisabled={false}
-        variation="primary"
-        children="Next"
-        {...getOverrideProps(overrides, "LoginButton")}
-      ></Button>
       <Text
         fontFamily="Inter"
         fontSize="16px"
@@ -113,13 +92,53 @@ export default function LoginScreen(props) {
         width="272px"
         height="27px"
         position="absolute"
-        top="422px"
-        left="19px"
+        top="408px"
+        left="24px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={failMsg}
         {...getOverrideProps(overrides, "LoginFailMsg")}
       ></Text>
+      <Button
+        display="flex"
+        gap="0"
+        position="absolute"
+        top="501px"
+        left="225px"
+        justifyContent="center"
+        alignItems="center"
+        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+        size="default"
+        isDisabled={false}
+        variation="primary"
+        children="Next"
+        {...getOverrideProps(overrides, "LoginButton")}
+      ></Button>
+      <Badge
+        display="flex"
+        gap="10px"
+        position="absolute"
+        top="43px"
+        left="40px"
+        width="240px"
+        height="122px"
+        justifyContent="flex-start"
+        alignItems="center"
+        borderRadius="32px"
+        padding="8px 12px 8px 12px"
+        backgroundColor="rgba(102,199,255,1)"
+        fontSize="48px"
+        color="rgba(255,255,255,1)"
+        lineHeight="72px"
+        fontFamily="Inter"
+        fontWeight="400"
+        textAlign="left"
+        direction="column"
+        size="default"
+        variation="default"
+        children="Login"
+        {...getOverrideProps(overrides, "Badge")}
+      ></Badge>
     </View>
   );
 }

@@ -1,45 +1,258 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createStudent = /* GraphQL */ `
+  mutation CreateStudent(
+    $input: CreateStudentInput!
+    $condition: ModelStudentConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createStudent(input: $input, condition: $condition) {
       id
-      name
-      description
+      studentEmail
+      studentID
+      firstName
+      lastName
+      Releases {
+        nextToken
+        startedAt
+      }
+      ParkingSpot {
+        id
+        lot
+        number
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        parkingSpotStudentId
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      studentParkingSpotId
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateStudent = /* GraphQL */ `
+  mutation UpdateStudent(
+    $input: UpdateStudentInput!
+    $condition: ModelStudentConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateStudent(input: $input, condition: $condition) {
       id
-      name
-      description
+      studentEmail
+      studentID
+      firstName
+      lastName
+      Releases {
+        nextToken
+        startedAt
+      }
+      ParkingSpot {
+        id
+        lot
+        number
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        parkingSpotStudentId
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      studentParkingSpotId
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteStudent = /* GraphQL */ `
+  mutation DeleteStudent(
+    $input: DeleteStudentInput!
+    $condition: ModelStudentConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteStudent(input: $input, condition: $condition) {
       id
-      name
-      description
+      studentEmail
+      studentID
+      firstName
+      lastName
+      Releases {
+        nextToken
+        startedAt
+      }
+      ParkingSpot {
+        id
+        lot
+        number
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        parkingSpotStudentId
+      }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      studentParkingSpotId
+    }
+  }
+`;
+export const createParkingSpot = /* GraphQL */ `
+  mutation CreateParkingSpot(
+    $input: CreateParkingSpotInput!
+    $condition: ModelParkingSpotConditionInput
+  ) {
+    createParkingSpot(input: $input, condition: $condition) {
+      id
+      lot
+      number
+      Student {
+        id
+        studentEmail
+        studentID
+        firstName
+        lastName
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        studentParkingSpotId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      parkingSpotStudentId
+    }
+  }
+`;
+export const updateParkingSpot = /* GraphQL */ `
+  mutation UpdateParkingSpot(
+    $input: UpdateParkingSpotInput!
+    $condition: ModelParkingSpotConditionInput
+  ) {
+    updateParkingSpot(input: $input, condition: $condition) {
+      id
+      lot
+      number
+      Student {
+        id
+        studentEmail
+        studentID
+        firstName
+        lastName
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        studentParkingSpotId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      parkingSpotStudentId
+    }
+  }
+`;
+export const deleteParkingSpot = /* GraphQL */ `
+  mutation DeleteParkingSpot(
+    $input: DeleteParkingSpotInput!
+    $condition: ModelParkingSpotConditionInput
+  ) {
+    deleteParkingSpot(input: $input, condition: $condition) {
+      id
+      lot
+      number
+      Student {
+        id
+        studentEmail
+        studentID
+        firstName
+        lastName
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        studentParkingSpotId
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      parkingSpotStudentId
+    }
+  }
+`;
+export const createReleases = /* GraphQL */ `
+  mutation CreateReleases(
+    $input: CreateReleasesInput!
+    $condition: ModelReleasesConditionInput
+  ) {
+    createReleases(input: $input, condition: $condition) {
+      id
+      date
+      lot
+      number
+      studentID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateReleases = /* GraphQL */ `
+  mutation UpdateReleases(
+    $input: UpdateReleasesInput!
+    $condition: ModelReleasesConditionInput
+  ) {
+    updateReleases(input: $input, condition: $condition) {
+      id
+      date
+      lot
+      number
+      studentID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteReleases = /* GraphQL */ `
+  mutation DeleteReleases(
+    $input: DeleteReleasesInput!
+    $condition: ModelReleasesConditionInput
+  ) {
+    deleteReleases(input: $input, condition: $condition) {
+      id
+      date
+      lot
+      number
+      studentID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

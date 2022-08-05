@@ -1,6 +1,25 @@
-type Todo @model @auth(rules: [{allow: public}]) {
+type Student @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
-  description: String
+  studentEmail: String
+  studentID: String
+  firstName: String
+  lastName: String
+  Releases: [Releases] @hasMany(indexName: "byStudent", fields: ["id"])
+  ParkingSpot: ParkingSpot @hasOne
+}
+
+type ParkingSpot @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  lot: String
+  number: String
+  Student: Student @belongsTo
+}
+
+type Releases @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: String
+  lot: String
+  number: String
+  studentID: ID! @index(name: "byStudent")
 }
  

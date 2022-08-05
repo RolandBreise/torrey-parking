@@ -3,27 +3,62 @@ import './App.css';
 import {LoginScreen}from "./ui-components";
 import React from 'react';
 import LoginWrapper from './wrappers/LoginWrapper'
+import ParkingWrapper from './wrappers/ParkingWrapper'
+import NoParkingWrapper from './wrappers/NoParkingWrapper'
+
 
 class App extends React.Component {
  
   constructor(props) {
+
     super(props);
-    this.state = ({screens: "login"});
+
+    this.state = ({
+      student: null,
+      hasSpot: false,
+    });
+
+    this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  login (student){
+    this.setState({
+      student: student,
+    })
+  }
+
+  logout (){
+    this.setState({
+      student: null,
+    })
   }
 
   render (){
-    if (this.state.screens == "login"){
+    if (this.state.student){
+      if(this.state.student.studentParkingSpotId){
+        return (
+          <div>
+            <ParkingWrapper
+            logout = {this.logout}/>
+          </div>
+        )
+      }else {
+        return (
+          <div>
+            <NoParkingWrapper
+            logout = {this.logout}/>
+          </div>
+        )
+      }
+    }else {
       return (
         <div className="App">
-          <LoginWrapper />
+          <LoginWrapper 
+          login = {this.login}/>
         </div>
         );
-    }else{
-      return (
-        <div>
-          Thiefsh
-        </div>
-      )
+      
     }
     
   }

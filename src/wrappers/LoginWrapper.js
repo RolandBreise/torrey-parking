@@ -1,15 +1,38 @@
 import {LoginScreen}from "../ui-components";
 import React from 'react';
+import { API } from 'aws-amplify';
+import { MyListStudents } from '../graphql/myQueries';
 
 export default class LoginWrapper extends React.Component {
  
   constructor(props) {
     super(props);
     this.state = ({
-        email: "joh",
-        studentID: "361183",
+        email: "",
+        studentID: "",
         errorMsg: null,
         });
+  }
+
+  // Lookup the supplied email/id and if it is in the DB, then set the state to the that user/student
+  async findStudent(email, id) {
+    if (email && id) {
+      try {
+        await API.graphql({ // THIS IS AN async function that generates a 'promise' and then waits on it to update the component state.
+          query: MyListStudents, variables: { filter: { studentEmail: { eq: email }, studentID: { eq: id } } }
+        }).then(students => {
+          if(students.data.listStudents.items.length > 0){
+            this.props.login(students.data.listStudents.items[0])
+          }else{
+            this.setState({
+              errorMsg: "wrong login... try again"
+            })
+          }
+        })
+      } catch (err) {
+        console.log({ err });
+      }
+    }
   }
 
   loginOverrides = {
@@ -32,15 +55,14 @@ export default class LoginWrapper extends React.Component {
     },
     "LoginButton": { 
         onClick: () => {
-            if(this.state.email == "josh"){
-                if(this.state.studentID == "123456"){
-                    //tell app we are done here
-                }else{
-                    this.setState({errorMsg: "wrong ID... try again"})
-                }    
+            if(this.state.email == ""){
+              this.setState({errorMsg: "please enter an email..."})
+            }else if(this.state.studentID == ""){
+              this.setState({errorMsg: "please enter an ID..."})
             }else{
-                this.setState({errorMsg: "wrong email... try again"})
-            }      
+              this.findStudent(this.state.email, this.state.studentID)
+            }
+                 
 
         }
     },

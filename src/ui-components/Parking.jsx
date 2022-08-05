@@ -9,7 +9,7 @@ import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Badge, Button, View } from "@aws-amplify/ui-react";
 export default function Parking(props) {
-  const { overrides, ...rest } = props;
+  const { PointsTracker, ButtonLabel, overrides, ...rest } = props;
   return (
     <View
       width="320px"
@@ -27,7 +27,6 @@ export default function Parking(props) {
         position="absolute"
         top="195px"
         left="67px"
-        direction="row"
         width="186px"
         height="179px"
         justifyContent="center"
@@ -37,6 +36,7 @@ export default function Parking(props) {
         size="large"
         isDisabled={false}
         variation="primary"
+        children={ButtonLabel}
         {...getOverrideProps(overrides, "GiveUpParking")}
       ></Button>
       <Badge
@@ -45,7 +45,6 @@ export default function Parking(props) {
         position="absolute"
         top="20px"
         left="208px"
-        direction="row"
         justifyContent="center"
         alignItems="center"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
@@ -54,24 +53,23 @@ export default function Parking(props) {
         backgroundColor="rgba(239,240,240,1)"
         size="default"
         variation="default"
+        children={PointsTracker}
         {...getOverrideProps(overrides, "Badge")}
       ></Badge>
       <Button
         display="flex"
         gap="0"
         position="absolute"
-        top="517px"
-        left="13px"
-        direction="row"
+        top="505px"
+        left="32px"
         justifyContent="center"
         alignItems="center"
-        border="1px SOLID rgba(174,179,183,1)"
-        borderRadius="5px"
-        size="small"
+        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+        size="default"
         isDisabled={false}
-        variation="default"
+        variation="primary"
         children="Logout"
-        {...getOverrideProps(overrides, "Logout")}
+        {...getOverrideProps(overrides, "LogoutButton")}
       ></Button>
     </View>
   );
