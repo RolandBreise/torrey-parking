@@ -52,7 +52,10 @@ class App extends React.Component {
         return (
           <div>
             <NoParkingWrapper
-            logout = {this.logout}/>
+            logout = {this.logout}
+            student = {this.state.student}
+            key = {this.UID++}
+            />
           </div>
         )
       }

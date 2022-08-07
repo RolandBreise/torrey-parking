@@ -3,6 +3,7 @@ import React from 'react';
 import { myGetStudent } from "../graphql/myQueries";
 import { API } from 'aws-amplify';
 import { createReleases, deleteReleases } from '../graphql/mutations'
+import { today } from "./util";
 
 
 export default class ParkingWrapper extends React.Component {
@@ -16,18 +17,15 @@ export default class ParkingWrapper extends React.Component {
         //TODO: set Released based on user data
   }
 
-  today(){
-    return (new Date().toISOString().split('T')[0]);
-  }
-
+  
   releasedToday(){
-    return (this.state.student.Releases.items.find(release => release.date == this.today()));
+    return (this.state.student.Releases.items.find(release => release.date == today()));
   }
 
   async updateStudent(){
     try {
         await API.graphql({ // THIS IS AN async function that generates a 'promise' and then waits on it to update the component state.
-            query: myGetStudent, variables: {  id: this.state.student.id, _version: this.state.student._version  }
+            query: myGetStudent, variables: {  id: this.state.student.id  }
         }).then(student => {
             this.setState({
                 student: student.data.getStudent
@@ -75,7 +73,7 @@ export default class ParkingWrapper extends React.Component {
             if(release){
                 this.deleteRelease(release);
             }else{
-                this.createRelease(this.today());
+                this.createRelease(today());
             }      
 
         }
