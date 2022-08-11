@@ -45,52 +45,52 @@ class App extends React.Component {
   }
 
   render (){
-    // return(
-    //   <div>
-    //     <CommingSoon
-    //       LogoUrl = {"LJCDS_Web_500_x2.png"}
-    //     />
-    //   </div>
-    // )
+    return(
+      <div>
+        <CommingSoon
+          LogoUrl = {"LJCDS_Web_500_x2.png"}
+        />
+      </div>
+    )
     
-    if (this.state.student){
-      if(this.state.student.studentEmail == "Admin"){
-        return(
-          <div>
-            <AdminWrapper
-              logout = {this.logout}
-            />
-          </div>
-        )
-      }else if(this.state.student.studentParkingSpotId){
-        return (
-          <div>
-            <ParkingWrapper
-            logout = {this.logout}
-            student = {this.state.student}
-            key = {this.UID++}
-            />
-          </div>
-        )
-      }else {
-        return (
-          <div>
-            <NoParkingWrapper
-            logout = {this.logout}
-            student = {this.state.student}
-            key = {this.UID++}
-            />
-          </div>
-        )
-      }
-    }else {
-      return (
-        <div className="App">
-          <LoginWrapper 
-          login = {this.login}/>
-        </div>
-      );
-    }
+    // if (this.state.student){
+    //   if(this.state.student.studentEmail == "Admin"){
+    //     return(
+    //       <div>
+    //         <AdminWrapper
+    //           logout = {this.logout}
+    //         />
+    //       </div>
+    //     )
+    //   }else if(this.state.student.studentParkingSpotId){
+    //     return (
+    //       <div>
+    //         <ParkingWrapper
+    //         logout = {this.logout}
+    //         student = {this.state.student}
+    //         key = {this.UID++}
+    //         />
+    //       </div>
+    //     )
+    //   }else {
+    //     return (
+    //       <div>
+    //         <NoParkingWrapper
+    //         logout = {this.logout}
+    //         student = {this.state.student}
+    //         key = {this.UID++}
+    //         />
+    //       </div>
+    //     )
+    //   }
+    // }else {
+    //   return (
+    //     <div className="App">
+    //       <LoginWrapper 
+    //       login = {this.login}/>
+    //     </div>
+    //   );
+    // }
   }
 
     
