@@ -1,10 +1,9 @@
-export const MyListStudents = /* GraphQL */ `
+export const myListStudents = /* GraphQL */ `
   query ListStudents(
     $filter: ModelStudentFilterInput
-    $limit: Int
     $nextToken: String
   ) {
-    listStudents(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listStudents(filter: $filter, limit: 1000, nextToken: $nextToken) {
       items {
         id
         studentEmail
@@ -79,6 +78,51 @@ export const myGetStudent = /* GraphQL */ `
       _deleted
       _lastChangedAt
       studentParkingSpotId
+    }
+  }
+`;
+export const myListReleases = /* GraphQL */ `
+  query ListReleases(
+    $filter: ModelReleasesFilterInput
+    $nextToken: String
+  ) {
+    listReleases(filter: $filter, limit: 10000, nextToken: $nextToken) {
+      items {
+        id
+        date
+        lot
+        number
+        studentID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const myListParkingSpots = /* GraphQL */ `
+  query ListParkingSpots(
+    $filter: ModelParkingSpotFilterInput
+    $nextToken: String
+  ) {
+    listParkingSpots(filter: $filter, limit: 1000, nextToken: $nextToken) {
+      items {
+        id
+        lot
+        number
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        parkingSpotStudentId
+      }
+      nextToken
+      startedAt
     }
   }
 `;

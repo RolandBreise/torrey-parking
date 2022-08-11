@@ -7,9 +7,9 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Badge, Button, Heading, Text, View } from "@aws-amplify/ui-react";
+import { Badge, Button, Flex, Heading, View } from "@aws-amplify/ui-react";
 export default function NoParking(props) {
-  const { GymSpots, MainSpots, overrides, ...rest } = props;
+  const { HeaderText, Spots, overrides, ...rest } = props;
   return (
     <View
       width="320px"
@@ -20,86 +20,42 @@ export default function NoParking(props) {
       {...rest}
       {...getOverrideProps(overrides, "NoParking")}
     >
-      <Heading
-        display="flex"
-        gap="0"
-        position="absolute"
-        top="49px"
-        left="67.5px"
-        width="177px"
-        height="54px"
-        justifyContent="center"
-        alignItems="center"
-        padding="0px 0px 0px 0px"
-        level="1"
-        children="Gym Lot"
-        {...getOverrideProps(overrides, "Heading31662853")}
-      ></Heading>
-      <Heading
-        display="flex"
-        gap="0"
-        position="absolute"
-        top="311px"
-        left="67.5px"
-        width="177px"
-        height="54px"
-        justifyContent="center"
-        alignItems="center"
-        padding="0px 0px 0px 0px"
-        level="1"
-        children="Main Lot"
-        {...getOverrideProps(overrides, "Heading31662874")}
-      ></Heading>
-      <Badge
-        display="flex"
+      <Flex
         gap="10px"
         position="absolute"
-        top="15px"
-        left="35px"
-        width="250px"
-        height="73px"
-        justifyContent="flex-start"
-        alignItems="center"
-        borderRadius="17px"
-        padding="8px 12px 8px 12px"
-        backgroundColor="rgba(102,199,255,1)"
-        fontSize="20px"
-        color="rgba(255,255,255,1)"
-        lineHeight="30px"
-        fontFamily="Inter"
-        fontWeight="400"
-        textAlign="left"
+        top="calc(50% - 46.5px - 234.5px)"
+        left="calc(50% - 135px - 5px)"
         direction="column"
-        size="default"
-        variation="default"
-        children="Gym Parking"
-        {...getOverrideProps(overrides, "Badge31872450")}
-      ></Badge>
-      <Badge
-        display="flex"
-        gap="10px"
-        position="absolute"
-        top="292px"
-        left="35px"
-        width="250px"
-        height="73px"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
-        borderRadius="17px"
-        padding="8px 12px 8px 12px"
-        backgroundColor="rgba(102,199,255,1)"
-        fontSize="20px"
-        color="rgba(255,255,255,1)"
-        lineHeight="30px"
-        fontFamily="Inter"
-        fontWeight="400"
-        textAlign="left"
-        direction="column"
-        size="default"
-        variation="default"
-        children="Main Parking"
-        {...getOverrideProps(overrides, "Badge31872454")}
-      ></Badge>
+        padding="10px 10px 10px 10px"
+        {...getOverrideProps(overrides, "Frame 2")}
+      >
+        <Badge
+          display="flex"
+          gap="10px"
+          width="250px"
+          height="73px"
+          justifyContent="flex-start"
+          alignItems="center"
+          shrink="0"
+          position="relative"
+          borderRadius="17px"
+          padding="8px 12px 8px 12px"
+          backgroundColor="rgba(102,199,255,1)"
+          fontSize="20px"
+          color="rgba(255,255,255,1)"
+          lineHeight="30px"
+          fontFamily="Inter"
+          fontWeight="400"
+          textAlign="left"
+          direction="column"
+          size="default"
+          variation="default"
+          children={HeaderText}
+          {...getOverrideProps(overrides, "Badge")}
+        ></Badge>
+      </Flex>
       <Heading
         display="flex"
         gap="0"
@@ -110,29 +66,9 @@ export default function NoParking(props) {
         alignItems="center"
         padding="0px 0px 0px 0px"
         level="1"
-        children={GymSpots}
-        {...getOverrideProps(overrides, "Heading31872456")}
+        children={Spots}
+        {...getOverrideProps(overrides, "Heading")}
       ></Heading>
-      <Text
-        fontFamily="Inter"
-        fontSize="16px"
-        fontWeight="400"
-        color="rgba(13,26,38,1)"
-        lineHeight="24px"
-        textAlign="left"
-        display="flex"
-        direction="column"
-        justifyContent="flex-start"
-        position="absolute"
-        top="65.67%"
-        bottom="30.11%"
-        left="12.81%"
-        right="55%"
-        padding="0px 0px 0px 0px"
-        whiteSpace="pre-wrap"
-        children={MainSpots}
-        {...getOverrideProps(overrides, "label")}
-      ></Text>
       <Button
         display="flex"
         gap="0"

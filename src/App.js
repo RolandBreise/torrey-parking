@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import {LoginScreen}from "./ui-components";
+import {CommingSoon, LoginScreen}from "./ui-components";
 import React from 'react';
 import LoginWrapper from './wrappers/LoginWrapper'
 import ParkingWrapper from './wrappers/ParkingWrapper'
 import NoParkingWrapper from './wrappers/NoParkingWrapper'
+import AdminWrapper from './wrappers/AdminWrapper'
+
 
 
 class App extends React.Component {
@@ -24,21 +26,43 @@ class App extends React.Component {
     this.login = this.login.bind(this);
   }
 
+  
+
   login (student){
     this.setState({
       student: student,
     })
+    localStorage.setItem("StudentEmail", student.studentEmail);
+    localStorage.setItem("StudentID", student.studentID);
   }
 
   logout (){
     this.setState({
       student: null,
     })
+    localStorage.removeItem("StudentEmail"); // clear the local storage
+    localStorage.removeItem("StudentID");
   }
 
   render (){
+    // return(
+    //   <div>
+    //     <CommingSoon
+    //       LogoUrl = {"LJCDS_Web_500_x2.png"}
+    //     />
+    //   </div>
+    // )
+    
     if (this.state.student){
-      if(this.state.student.studentParkingSpotId){
+      if(this.state.student.studentEmail == "Admin"){
+        return(
+          <div>
+            <AdminWrapper
+              logout = {this.logout}
+            />
+          </div>
+        )
+      }else if(this.state.student.studentParkingSpotId){
         return (
           <div>
             <ParkingWrapper
@@ -65,12 +89,14 @@ class App extends React.Component {
           <LoginWrapper 
           login = {this.login}/>
         </div>
-        );
-      
+      );
     }
-    
   }
-  
+
+    
+    
 }
+  
+
 
 export default App;

@@ -7,11 +7,9 @@
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
-export declare type LoginScreenProps = React.PropsWithChildren<Partial<FlexProps> & {
-    email?: String;
-    ID?: String;
-    failMsg?: String;
+export declare type AdminProps = React.PropsWithChildren<Partial<FlexProps> & {
+    LargeTextContents?: String;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function LoginScreen(props: LoginScreenProps): React.ReactElement;
+export default function Admin(props: AdminProps): React.ReactElement;

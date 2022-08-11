@@ -7,48 +7,63 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import {
-  Badge,
-  Button,
-  Heading,
-  Text,
-  TextField,
-  View,
-} from "@aws-amplify/ui-react";
+import { Badge, Button, Flex, Text, TextField } from "@aws-amplify/ui-react";
 export default function LoginScreen(props) {
   const { email, ID, failMsg, overrides, ...rest } = props;
   return (
-    <View
-      width="320px"
-      height="568px"
+    <Flex
+      gap="43px"
+      direction="column"
+      alignItems="center"
       position="relative"
-      padding="0px 0px 0px 0px"
+      padding="17px 10px 17px 10px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "LoginScreen")}
     >
-      <Heading
-        display="flex"
-        gap="0"
-        position="absolute"
-        top="118px"
-        left="98px"
+      <Flex
+        gap="10px"
+        direction="column"
         justifyContent="center"
         alignItems="center"
-        padding="0px 0px 0px 0px"
-        level="1"
-        children="Login"
-        {...getOverrideProps(overrides, "Heading")}
-      ></Heading>
+        shrink="0"
+        position="relative"
+        padding="10px 10px 10px 10px"
+        {...getOverrideProps(overrides, "Frame 3")}
+      >
+        <Badge
+          display="flex"
+          gap="10px"
+          width="240px"
+          height="122px"
+          justifyContent="flex-start"
+          alignItems="center"
+          shrink="0"
+          position="relative"
+          borderRadius="32px"
+          padding="8px 12px 8px 12px"
+          backgroundColor="rgba(102,199,255,1)"
+          fontSize="48px"
+          color="rgba(255,255,255,1)"
+          lineHeight="72px"
+          fontFamily="Inter"
+          fontWeight="400"
+          textAlign="left"
+          direction="column"
+          size="default"
+          variation="default"
+          children="Login"
+          {...getOverrideProps(overrides, "Badge")}
+        ></Badge>
+      </Flex>
       <TextField
         display="flex"
         gap="8px"
-        position="absolute"
-        top="232px"
-        left="10px"
         direction="column"
         width="300px"
         justifyContent="center"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         label="Student Email"
         placeholder="first.last@ljcds.org..."
@@ -62,12 +77,11 @@ export default function LoginScreen(props) {
       <TextField
         display="flex"
         gap="8px"
-        position="absolute"
-        top="320px"
-        left="10px"
         direction="column"
         width="300px"
         justifyContent="center"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         label="Student ID"
         placeholder="47892465..."
@@ -91,9 +105,8 @@ export default function LoginScreen(props) {
         justifyContent="flex-start"
         width="272px"
         height="27px"
-        position="absolute"
-        top="408px"
-        left="24px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={failMsg}
@@ -102,11 +115,11 @@ export default function LoginScreen(props) {
       <Button
         display="flex"
         gap="0"
-        position="absolute"
-        top="501px"
-        left="225px"
+        width="fit-content"
         justifyContent="center"
         alignItems="center"
+        shrink="0"
+        position="relative"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
         size="default"
         isDisabled={false}
@@ -114,31 +127,6 @@ export default function LoginScreen(props) {
         children="Next"
         {...getOverrideProps(overrides, "LoginButton")}
       ></Button>
-      <Badge
-        display="flex"
-        gap="10px"
-        position="absolute"
-        top="43px"
-        left="40px"
-        width="240px"
-        height="122px"
-        justifyContent="flex-start"
-        alignItems="center"
-        borderRadius="32px"
-        padding="8px 12px 8px 12px"
-        backgroundColor="rgba(102,199,255,1)"
-        fontSize="48px"
-        color="rgba(255,255,255,1)"
-        lineHeight="72px"
-        fontFamily="Inter"
-        fontWeight="400"
-        textAlign="left"
-        direction="column"
-        size="default"
-        variation="default"
-        children="Login"
-        {...getOverrideProps(overrides, "Badge")}
-      ></Badge>
-    </View>
+    </Flex>
   );
 }

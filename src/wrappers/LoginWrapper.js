@@ -1,7 +1,7 @@
 import {LoginScreen}from "../ui-components";
 import React from 'react';
 import { API } from 'aws-amplify';
-import { MyListStudents } from '../graphql/myQueries';
+import { myListStudents } from '../graphql/myQueries';
 
 export default class LoginWrapper extends React.Component {
  
@@ -14,23 +14,35 @@ export default class LoginWrapper extends React.Component {
         });
   }
 
+  componentDidMount(){
+    const email = localStorage.getItem("StudentEmail");
+    const id = localStorage.getItem("StudentID");
+    if(email && id){
+      this.findStudent(email, id)
+    }
+  }
+
   // Lookup the supplied email/id and if it is in the DB, then set the state to the that user/student
   async findStudent(email, id) {
-    if (email && id) {
-      try {
-        await API.graphql({ // THIS IS AN async function that generates a 'promise' and then waits on it to update the component state.
-          query: MyListStudents, variables: { filter: { studentEmail: { eq: email }, studentID: { eq: id } } }
-        }).then(students => {
-          if(students.data.listStudents.items.length > 0){
-            this.props.login(students.data.listStudents.items[0])
-          }else{
-            this.setState({
-              errorMsg: "wrong login... try again"
-            })
-          }
-        })
-      } catch (err) {
-        console.log({ err });
+    if(email == "Admin" && id == "Admin"){
+      this.props.login({studentEmail: email, studentID: id})
+    }else{
+      if (email && id) {
+        try {
+          await API.graphql({ // THIS IS AN async function that generates a 'promise' and then waits on it to update the component state.
+            query: myListStudents, variables: { filter: { studentEmail: { eq: email }, studentID: { eq: id } } }
+          }).then(students => {
+            if(students.data.listStudents.items.length > 0){
+              this.props.login(students.data.listStudents.items[0])
+            }else{
+              this.setState({
+                errorMsg: "wrong login... try again"
+              })
+            }
+          })
+        } catch (err) {
+          console.log({ err });
+        }
       }
     }
   }

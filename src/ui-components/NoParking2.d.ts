@@ -4,9 +4,10 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as LoginScreen } from "./LoginScreen";
-export { default as NoParking } from "./NoParking";
-export { default as CommingSoon } from "./CommingSoon";
-export { default as Admin } from "./Admin";
-export { default as Parking } from "./Parking";
-export { default as studioTheme } from "./studioTheme";
+import React from "react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { ViewProps } from "@aws-amplify/ui-react";
+export declare type NoParking2Props = React.PropsWithChildren<Partial<ViewProps> & {
+    overrides?: EscapeHatchProps | undefined | null;
+}>;
+export default function NoParking2(props: NoParking2Props): React.ReactElement;

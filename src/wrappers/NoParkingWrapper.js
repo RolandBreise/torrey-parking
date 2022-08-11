@@ -5,6 +5,8 @@ import { API } from 'aws-amplify';
 import { today } from "./util";
 import { DataStore } from "aws-amplify";
 import { ParkingSpot, Releases } from '../models';
+import { Tabs, TabItem } from '@aws-amplify/ui-react';
+
 
 export default class NoParkingWrapper extends React.Component {
  
@@ -81,11 +83,23 @@ export default class NoParkingWrapper extends React.Component {
     let mainSpots = this.getSpotLot("main");
 
       return (
-        <NoParking 
-            overrides={this.noParkingOverrides}
-            GymSpots={gymSpots}
-            MainSpots={mainSpots}
-        />
+        <Tabs>
+          <TabItem title="Main Lot">
+            <NoParking 
+              overrides={this.noParkingOverrides}
+              Spots={mainSpots}
+              HeaderText={"Main Lot"}
+            />
+          </TabItem>
+          <TabItem title="Gym Lot">
+          <NoParking 
+              overrides={this.noParkingOverrides}
+              Spots={gymSpots}
+              HeaderText={"Gym Lot"}
+            />
+          </TabItem>
+        </Tabs>
+        
       )
     }
     

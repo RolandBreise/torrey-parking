@@ -8,8 +8,8 @@ import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ViewProps } from "@aws-amplify/ui-react";
 export declare type NoParkingProps = React.PropsWithChildren<Partial<ViewProps> & {
-    GymSpots?: String;
-    MainSpots?: String;
+    HeaderText?: String;
+    Spots?: String;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
