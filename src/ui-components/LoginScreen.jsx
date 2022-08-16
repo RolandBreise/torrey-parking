@@ -12,11 +12,11 @@ export default function LoginScreen(props) {
   const { email, ID, failMsg, overrides, ...rest } = props;
   return (
     <Flex
-      gap="43px"
+      gap="42px"
       direction="column"
       alignItems="center"
       position="relative"
-      padding="17px 10px 17px 10px"
+      padding="22px 0px 22px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "LoginScreen")}
@@ -24,6 +24,8 @@ export default function LoginScreen(props) {
       <Flex
         gap="10px"
         direction="column"
+        width="241px"
+        height="95px"
         justifyContent="center"
         alignItems="center"
         shrink="0"
@@ -112,21 +114,51 @@ export default function LoginScreen(props) {
         children={failMsg}
         {...getOverrideProps(overrides, "LoginFailMsg")}
       ></Text>
-      <Button
-        display="flex"
-        gap="0"
-        width="fit-content"
-        justifyContent="center"
+      <Flex
+        gap="137px"
+        width="313px"
+        justifyContent="flex-end"
         alignItems="center"
         shrink="0"
         position="relative"
-        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
-        size="default"
-        isDisabled={false}
-        variation="primary"
-        children="Next"
-        {...getOverrideProps(overrides, "LoginButton")}
-      ></Button>
+        padding="23px 10px 23px 10px"
+        backgroundColor="rgba(255,255,255,1)"
+        {...getOverrideProps(overrides, "Frame 8")}
+      >
+        <Button
+          display="flex"
+          gap="0"
+          width="fit-content"
+          justifyContent="center"
+          alignItems="center"
+          shrink="0"
+          height="40px"
+          position="relative"
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+          backgroundColor="rgba(149,4,4,1)"
+          size="default"
+          isDisabled={false}
+          variation="primary"
+          children="Cancel"
+          {...getOverrideProps(overrides, "Cancel")}
+        ></Button>
+        <Button
+          display="flex"
+          gap="0"
+          width="fit-content"
+          justifyContent="center"
+          alignItems="center"
+          shrink="0"
+          height="40px"
+          position="relative"
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+          size="default"
+          isDisabled={false}
+          variation="primary"
+          children="Next"
+          {...getOverrideProps(overrides, "LoginButton")}
+        ></Button>
+      </Flex>
     </Flex>
   );
 }
