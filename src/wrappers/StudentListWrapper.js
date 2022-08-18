@@ -27,6 +27,7 @@ export default class StudentListWrapper extends React.Component {
         this.closeEditor = this.closeEditor.bind(this);
         this.onClickStudent = this.onClickStudent.bind(this);
         this.onClickHeader = this.onClickHeader.bind(this);
+        this.releasesSubscription = null;
     }
 
     componentDidMount(){
@@ -89,14 +90,24 @@ export default class StudentListWrapper extends React.Component {
 
     openEditor() {
         this.setState({ editing: true });
+        if(this.releasesSubscription){
+            this.releasesSubscription.unsubscribe();
+        }
     }
     closeEditor() {
         this.setState({ editing: false });
+        if(!this.releasesSubscription){
+            this.releasesSubscription = DataStore.observe(Releases).subscribe(msg => { // subscribe to changes in releases to update released spot list
+                this.getStudents();
+            });
+        }
+        this.getStudents();
     }
     
     onClickStudent(e, s) {
         if (e.detail > 1) { // double click
-            this.setState({ editingStudent: s, editing: true });
+            this.setState({ editingStudent: s});
+            this.openEditor();
         }
     }
 

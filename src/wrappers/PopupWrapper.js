@@ -16,6 +16,7 @@ export default class PopupWrapper extends React.Component {
         date: today(),
         errorMsg: null,
     });
+    this.updateStudent = this.updateStudent.bind(this);
   }
 
 
@@ -30,7 +31,7 @@ export default class PopupWrapper extends React.Component {
     this.setState({ student: student })
 }
 
-  async updateStudentData() {
+async updateStudentData() {
     const student = this.props.student;
     if (this.state.student) {
         try {
@@ -126,9 +127,9 @@ onClickSave(){
     try {
         await API.graphql({ // THIS IS AN async function that generates a 'promise' and then waits on it to update the component state.
             query: myGetStudent, variables: {  id: this.state.student.id  }
-        }).then(student => {
+        }).then(result => {
             this.setState({
-                student: student.data.getStudent,
+                student: result.data.getStudent,
             })
         })
     } catch(err){
