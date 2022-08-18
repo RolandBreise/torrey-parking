@@ -6,12 +6,12 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ViewProps } from "@aws-amplify/ui-react";
-export declare type ParkingProps = React.PropsWithChildren<Partial<ViewProps> & {
-    PointsTracker?: String;
-    ButtonLabel?: String;
-    date?: String;
+import { FlexProps } from "@aws-amplify/ui-react";
+export declare type HomeScreenProps = React.PropsWithChildren<Partial<FlexProps> & {
+    LogoURL?: String;
+    Date?: String;
+    SpotCounter?: String;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function Parking(props: ParkingProps): React.ReactElement;
+export default function HomeScreen(props: HomeScreenProps): React.ReactElement;

@@ -7,9 +7,9 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Badge, Button, View } from "@aws-amplify/ui-react";
+import { Badge, Button, TextField, View } from "@aws-amplify/ui-react";
 export default function Parking(props) {
-  const { PointsTracker, ButtonLabel, overrides, ...rest } = props;
+  const { PointsTracker, ButtonLabel, date, overrides, ...rest } = props;
   return (
     <View
       width="320px"
@@ -25,10 +25,10 @@ export default function Parking(props) {
         display="flex"
         gap="0"
         position="absolute"
-        top="195px"
-        left="67px"
-        width="186px"
-        height="179px"
+        top="278px"
+        left="86px"
+        width="168px"
+        height="162px"
         justifyContent="center"
         alignItems="center"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
@@ -71,6 +71,25 @@ export default function Parking(props) {
         children="Logout"
         {...getOverrideProps(overrides, "LogoutButton")}
       ></Button>
+      <TextField
+        display="flex"
+        gap="8px"
+        position="absolute"
+        top="155px"
+        left="10px"
+        direction="column"
+        width="300px"
+        justifyContent="center"
+        padding="0px 0px 0px 0px"
+        placeholder="Placeholder"
+        size="default"
+        isDisabled={false}
+        labelHidden={false}
+        variation="default"
+        type="date"
+        value={date}
+        {...getOverrideProps(overrides, "Date")}
+      ></TextField>
     </View>
   );
 }
