@@ -7,7 +7,7 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Heading } from "@aws-amplify/ui-react";
+import { Button, Flex, Heading, Text } from "@aws-amplify/ui-react";
 export default function Admin(props) {
   const { LargeTextContents, overrides, ...rest } = props;
   return (
@@ -34,21 +34,30 @@ export default function Admin(props) {
         padding="0px 0px 0px 0px"
         level="1"
         children="Torrey Parking Admin Screen"
-        {...getOverrideProps(overrides, "Heading32482464")}
+        {...getOverrideProps(overrides, "Heading")}
       ></Heading>
-      <Heading
+      <Text
+        fontFamily="Inter"
+        fontSize="20px"
+        fontWeight="700"
+        color="rgba(172,52,52,1)"
+        lineHeight="25px"
+        textAlign="center"
         display="flex"
-        gap="0"
-        width="fit-content"
-        justifyContent="center"
-        alignItems="center"
+        direction="column"
+        justifyContent="flex-start"
+        width="861px"
+        height="48px"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        level="1"
-        children="WARNING: All actions on this screen effect the database and cannot be undone"
-        {...getOverrideProps(overrides, "Heading32482468")}
-      ></Heading>
+        whiteSpace="pre-wrap"
+        children="WARNING: EVERYTHING ON THIS SCREEN WILL DIRECTLY EFFECT THE DATABASE AND ARE IRRIVERSABLE."
+        {...getOverrideProps(
+          overrides,
+          "WARNING: EVERYTHING ON THIS SCREEN WILL DIRECTLY EFFECT THE DATABASE AND ARE IRRIVERSABLE."
+        )}
+      ></Text>
       <Flex
         gap="10px"
         justifyContent="flex-end"
