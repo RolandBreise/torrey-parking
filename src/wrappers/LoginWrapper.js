@@ -24,7 +24,7 @@ export default class LoginWrapper extends React.Component {
 
   // Lookup the supplied email/id and if it is in the DB, then set the state to the that user/student
   async findStudent(email, id) {
-    if(email == "Admin" && id == "Admin"){
+    if(email == "Admin" && id == "LJCDS1926"){
       this.props.login({studentEmail: email, studentID: id})
     }else{
       if (email && id) {
