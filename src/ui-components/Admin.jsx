@@ -7,7 +7,7 @@
 /* eslint-disable */
 import React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Heading } from "@aws-amplify/ui-react";
+import { Button, Flex, Heading, Text } from "@aws-amplify/ui-react";
 export default function Admin(props) {
   const { LargeTextContents, overrides, ...rest } = props;
   return (
@@ -33,68 +33,42 @@ export default function Admin(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         level="1"
-        children="Torrey Parking Database Admin Screen"
-        {...getOverrideProps(overrides, "Heading32482464")}
+        children="Torrey Parking Admin Screen"
+        {...getOverrideProps(overrides, "Heading")}
       ></Heading>
-      <Heading
+      <Text
+        fontFamily="Inter"
+        fontSize="20px"
+        fontWeight="700"
+        color="rgba(172,52,52,1)"
+        lineHeight="25px"
+        textAlign="center"
         display="flex"
-        gap="0"
-        width="fit-content"
-        justifyContent="center"
-        alignItems="center"
+        direction="column"
+        justifyContent="flex-start"
+        width="861px"
+        height="48px"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        level="1"
-        children="WARNING: All actions on this screen effect the entire database and cannot be undone"
-        {...getOverrideProps(overrides, "Heading32482468")}
-      ></Heading>
+        whiteSpace="pre-wrap"
+        children="WARNING: EVERYTHING ON THIS SCREEN WILL DIRECTLY EFFECT THE DATABASE AND ARE IRRIVERSABLE."
+        {...getOverrideProps(
+          overrides,
+          "WARNING: EVERYTHING ON THIS SCREEN WILL DIRECTLY EFFECT THE DATABASE AND ARE IRRIVERSABLE."
+        )}
+      ></Text>
       <Flex
-        gap="420px"
-        width="fit-content"
-        justifyContent="center"
+        gap="10px"
+        justifyContent="flex-end"
         alignItems="center"
         shrink="0"
+        alignSelf="stretch"
+        objectFit="cover"
         position="relative"
-        padding="43px 150px 43px 150px"
-        {...getOverrideProps(overrides, "Frame 1")}
+        padding="9px 48px 9px 48px"
+        {...getOverrideProps(overrides, "Frame 9")}
       >
-        <Button
-          display="flex"
-          gap="0"
-          width="fit-content"
-          justifyContent="center"
-          alignItems="center"
-          shrink="0"
-          height="42px"
-          position="relative"
-          border="1px SOLID rgba(220,222,224,1)"
-          borderRadius="5px"
-          padding="8px 16px 8px 16px"
-          size="default"
-          isDisabled={false}
-          variation="default"
-          children="Load CSV DATA"
-          {...getOverrideProps(overrides, "LoadCSV")}
-        ></Button>
-        <Button
-          display="flex"
-          gap="0"
-          width="fit-content"
-          justifyContent="center"
-          alignItems="center"
-          shrink="0"
-          height="42px"
-          position="relative"
-          border="1px SOLID rgba(220,222,224,1)"
-          borderRadius="5px"
-          padding="8px 16px 8px 16px"
-          size="default"
-          isDisabled={false}
-          variation="default"
-          children="Delete All DATA"
-          {...getOverrideProps(overrides, "ClearAll")}
-        ></Button>
         <Button
           display="flex"
           gap="0"

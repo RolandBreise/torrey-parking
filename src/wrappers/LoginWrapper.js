@@ -78,6 +78,12 @@ export default class LoginWrapper extends React.Component {
 
         }
     },
+    "Cancel": { 
+      onClick: () => {
+        this.props.leaveLogin()
+
+      }
+  },
 }
 
   render (){

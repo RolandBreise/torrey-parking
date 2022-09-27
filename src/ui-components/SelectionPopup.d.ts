@@ -6,12 +6,17 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ViewProps } from "@aws-amplify/ui-react";
-export declare type ParkingProps = React.PropsWithChildren<Partial<ViewProps> & {
-    PointsTracker?: String;
-    ButtonLabel?: String;
+import { FlexProps } from "@aws-amplify/ui-react";
+export declare type SelectionPopupProps = React.PropsWithChildren<Partial<FlexProps> & {
     date?: String;
+    firstName?: String;
+    lastName?: String;
+    studentEmail?: String;
+    studentID?: String;
+    PointCounter?: String;
+    ButtonLabel?: String;
+    ErrorMsg?: String;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function Parking(props: ParkingProps): React.ReactElement;
+export default function SelectionPopup(props: SelectionPopupProps): React.ReactElement;
