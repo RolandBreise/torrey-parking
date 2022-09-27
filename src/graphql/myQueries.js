@@ -51,16 +51,16 @@ export const myGetStudent = /* GraphQL */ `
       studentID
       firstName
       lastName
-        Releases {
-            items {
-                id
-                _version
-                date
-                lot
-                number
-                studentID
-            }
+      Releases {
+        items {
+          id
+          _version
+          date
+          lot
+          number
+          studentID
         }
+      }
       ParkingSpot {
         id
         lot

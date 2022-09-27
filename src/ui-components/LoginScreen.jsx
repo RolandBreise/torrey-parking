@@ -12,11 +12,11 @@ export default function LoginScreen(props) {
   const { email, ID, failMsg, overrides, ...rest } = props;
   return (
     <Flex
-      gap="43px"
+      gap="42px"
       direction="column"
       alignItems="center"
       position="relative"
-      padding="17px 10px 17px 10px"
+      padding="22px 0px 22px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "LoginScreen")}
@@ -24,22 +24,25 @@ export default function LoginScreen(props) {
       <Flex
         gap="10px"
         direction="column"
+        width="241px"
+        height="69px"
         justifyContent="center"
         alignItems="center"
         shrink="0"
         position="relative"
-        padding="10px 10px 10px 10px"
+        padding="10px 10px 0px 10px"
         {...getOverrideProps(overrides, "Frame 3")}
       >
         <Badge
           display="flex"
           gap="10px"
           width="240px"
-          height="122px"
+          height="100px"
           justifyContent="flex-start"
           alignItems="center"
           shrink="0"
           position="relative"
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
           borderRadius="32px"
           padding="8px 12px 8px 12px"
           backgroundColor="rgba(102,199,255,1)"
@@ -112,21 +115,51 @@ export default function LoginScreen(props) {
         children={failMsg}
         {...getOverrideProps(overrides, "LoginFailMsg")}
       ></Text>
-      <Button
-        display="flex"
-        gap="0"
-        width="fit-content"
-        justifyContent="center"
+      <Flex
+        gap="137px"
+        width="313px"
+        justifyContent="flex-end"
         alignItems="center"
         shrink="0"
         position="relative"
-        boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
-        size="default"
-        isDisabled={false}
-        variation="primary"
-        children="Next"
-        {...getOverrideProps(overrides, "LoginButton")}
-      ></Button>
+        padding="23px 10px 23px 10px"
+        backgroundColor="rgba(255,255,255,1)"
+        {...getOverrideProps(overrides, "Frame 8")}
+      >
+        <Button
+          display="flex"
+          gap="0"
+          width="fit-content"
+          justifyContent="center"
+          alignItems="center"
+          shrink="0"
+          height="40px"
+          position="relative"
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+          backgroundColor="rgba(149,4,4,1)"
+          size="default"
+          isDisabled={false}
+          variation="primary"
+          children="Cancel"
+          {...getOverrideProps(overrides, "Cancel")}
+        ></Button>
+        <Button
+          display="flex"
+          gap="0"
+          width="fit-content"
+          justifyContent="center"
+          alignItems="center"
+          shrink="0"
+          height="40px"
+          position="relative"
+          boxShadow="0px 4px 4px rgba(0, 0, 0, 0.30000001192092896)"
+          size="default"
+          isDisabled={false}
+          variation="primary"
+          children="Next"
+          {...getOverrideProps(overrides, "LoginButton")}
+        ></Button>
+      </Flex>
     </Flex>
   );
 }

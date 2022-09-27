@@ -3,7 +3,7 @@ import React from 'react';
 import { myGetStudent } from "../graphql/myQueries";
 import { API } from 'aws-amplify';
 import { createReleases, deleteReleases } from '../graphql/mutations'
-import { today } from "./util";
+import { today, canRelease, findPoints } from "./util";
 
 
 export default class ParkingWrapper extends React.Component {
@@ -13,13 +13,14 @@ export default class ParkingWrapper extends React.Component {
     this.state = ({
             Released: false,
             student: this.props.student,
+            date: today(),
         });
         //TODO: set Released based on user data
   }
 
   
   releasedToday(){
-    return (this.state.student.Releases.items.find(release => release.date == today()));
+    return (this.state.student.Releases.items.find(release => release.date == this.state.date));
   }
 
   async updateStudent(){
@@ -28,7 +29,7 @@ export default class ParkingWrapper extends React.Component {
             query: myGetStudent, variables: {  id: this.state.student.id  }
         }).then(student => {
             this.setState({
-                student: student.data.getStudent
+                student: student.data.getStudent,
             })
         })
     } catch(err){
@@ -42,8 +43,8 @@ export default class ParkingWrapper extends React.Component {
             query: createReleases, variables: { input: { 
                 date: date, 
                 studentID: this.state.student.id, 
-                lot: this.state.student.ParkingSpot.lot, 
-                number: this.state.student.ParkingSpot.number
+                // lot: this.state.student.ParkingSpot.lot, 
+                // number: this.state.student.ParkingSpot.number
             } }
         }).then(release => { // created a new release.  Record is in release.data.createRelease
             this.updateStudent() // Ask App to reload this student, which will cause this component to re-render
@@ -65,6 +66,8 @@ export default class ParkingWrapper extends React.Component {
     }
   }
 
+  
+
   parkingOverrides = {
     
     "GiveUpParking": { 
@@ -73,10 +76,12 @@ export default class ParkingWrapper extends React.Component {
             if(release){
                 this.deleteRelease(release);
             }else{
-                this.createRelease(today());
+                this.createRelease(this.state.date);
             }      
 
-        }
+        },
+
+        
     },
     "LogoutButton": { 
         onClick: () => {
@@ -84,16 +89,26 @@ export default class ParkingWrapper extends React.Component {
 
         }
     },
+    "Date": { 
+        onChange: (event) => {
+            this.setState({
+                date: event.target.value,
+            })
+        }
+    },
 }
 
   render (){
+    let overrides = this.parkingOverrides;
+    overrides["GiveUpParking"].isDisabled = this.state && canRelease(this.state.date) ? false : true;
     
       return (
         <Parking 
             overrides={this.parkingOverrides}
             ButtonLabel={this.releasedToday() ? "Reclaim Parking" : "Release Parking"}
             GiveUpParking={this.state.GiveUpParking}
-            PointsTracker={"points: " + this.state.student.Releases.items.length}
+            PointsTracker={"points: " + findPoints(this.state.student.Releases.items)}
+            date={this.state.date}
         />
       )
     }

@@ -6,6 +6,7 @@ import LoginWrapper from './wrappers/LoginWrapper'
 import ParkingWrapper from './wrappers/ParkingWrapper'
 import NoParkingWrapper from './wrappers/NoParkingWrapper'
 import AdminWrapper from './wrappers/AdminWrapper'
+import HomeScreenWraper from './wrappers/HomeScreenWrapper';
 
 
 
@@ -18,12 +19,14 @@ class App extends React.Component {
     this.UID = 0;
 
     this.state = ({
+      logingIn: false,
       student: null,
       hasSpot: false,
     });
 
     this.logout = this.logout.bind(this);
     this.login = this.login.bind(this);
+    this.toggleLoginScreen = this.toggleLoginScreen.bind(this);
   }
 
   
@@ -39,9 +42,14 @@ class App extends React.Component {
   logout (){
     this.setState({
       student: null,
+      logingIn: false,
     })
     localStorage.removeItem("StudentEmail"); // clear the local storage
     localStorage.removeItem("StudentID");
+  }
+
+  toggleLoginScreen(){
+    this.setState({logingIn: !this.state.logingIn})
   }
 
   render (){
@@ -62,7 +70,7 @@ class App extends React.Component {
             />
           </div>
         )
-      }else if(this.state.student.studentParkingSpotId){
+      }else {//if(this.state.student.studentParkingSpotId){
         return (
           <div>
             <ParkingWrapper
@@ -72,24 +80,34 @@ class App extends React.Component {
             />
           </div>
         )
-      }else {
+      } // else {
+      //   return (
+      //     <div>
+      //       <NoParkingWrapper
+      //       logout = {this.logout}
+      //       student = {this.state.student}
+      //       key = {this.UID++}
+      //       />
+      //     </div>
+      //   )
+      // }
+    }else {
+      if(this.state.logingIn){
         return (
-          <div>
-            <NoParkingWrapper
-            logout = {this.logout}
-            student = {this.state.student}
-            key = {this.UID++}
+          <div className="App">
+            <LoginWrapper 
+            login = {this.login}
+            leaveLogin = {this.toggleLoginScreen}
             />
           </div>
-        )
+        );
+      }else{
+        return (
+          <div className="App">
+            <HomeScreenWraper goToLogin = {this.toggleLoginScreen}/>
+          </div>
+        );
       }
-    }else {
-      return (
-        <div className="App">
-          <LoginWrapper 
-          login = {this.login}/>
-        </div>
-      );
     }
   }
 
