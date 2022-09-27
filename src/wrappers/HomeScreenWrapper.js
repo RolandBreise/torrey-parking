@@ -85,13 +85,18 @@ export default class HomeScreenWraper extends React.Component {
 
     // let gymSpots = this.getSpotLot("gym");
     // let mainSpots = this.getSpotLot("main");
+    let numSpots = this.state.releasedSpots.length;
+    let firstSpot = (36-numSpots);
+    if(firstSpot<1){
+      firstSpot = 1;
+    }
 
       return (
         
           <HomeScreen 
               overrides={this.noParkingOverrides}
               Date={today()}
-              SpotCounter= {"Junior Spots: " + this.state.releasedSpots.length}
+              SpotCounter= {"Junior Spots: " + firstSpot + " - 50"}
               LogoURL={"LJCDS_Web_500_x2.png"}
               // Spots={gymSpots}
               // HeaderText={"Gym Lot"}
