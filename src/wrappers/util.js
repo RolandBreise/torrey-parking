@@ -62,5 +62,5 @@ export function canRelease(date){
 export function findPoints(releases){
   const result = releases.filter(item => item.date <= today());
 
-  return result.length;
+  return (result.length*2);
 }
